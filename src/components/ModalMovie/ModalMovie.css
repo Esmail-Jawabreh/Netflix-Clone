@@ -1,0 +1,39 @@
+#modal{
+    background-color: black;
+}
+
+#header{
+    background-color: rgba(0, 0, 0, 1);
+}
+
+#title{
+    color: #fff;
+}
+
+#body{
+    background-color: black;
+    color: #fff;
+}
+
+#bodyDiv{
+    display: flex;
+    gap: 5px;
+    
+}
+
+#img{
+    height: 380px;
+    width: 80%;
+}
+
+#titleOV{
+    font-size: 16px;
+}
+
+#label{
+    font-size: 15px;
+}
+
+#footer{
+    background-color: black;
+}

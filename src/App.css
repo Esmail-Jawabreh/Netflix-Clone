@@ -36,3 +36,25 @@
     transform: rotate(360deg);
   }
 }
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #FFF;
+  font-family: math;
+
+
+}
+
+::-webkit-scrollbar {
+  width: 15px;
+
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.55);
+}
+
+::-webkit-scrollbar-thumb {
+  background:rgba(0, 0, 0, 1);
+}

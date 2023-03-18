@@ -1,0 +1,99 @@
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
+import Image from 'react-bootstrap/Image';
+import Form from 'react-bootstrap/Form';
+import { useState } from 'react';
+
+
+function ModalFav(props) {
+
+    const [addFeedback, setAddComm] = useState('');
+
+    function handleFeedback(eve) {
+        setAddComm(eve.target.value);
+    }
+
+    const handleSave = async () => {
+
+        const dataToSend = {
+            movieTitle: props.MovieData.title,
+            release_date: props.MovieData.release_date,
+            poster_path: props.MovieData.poster_path,
+            overview: props.MovieData.overview,
+            comment: addFeedback
+        }
+
+        const requestOptions = {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(dataToSend)
+        };
+
+        const response = await fetch(`${process.env.REACT_APP_serverURL}getMovie/${props.MovieData.id}`, requestOptions);
+        const data = await response.json();
+        props.setNewArr(data)
+    }
+
+
+    const style2 = { backgroundColor: 'black' }
+    const style3 = { display: 'flex' }
+    const style1 = { gap: '10px' }
+
+
+    return (
+
+        <Modal style={{ ...style2 }} show={props.showFlag} onHide={props.handleclose}>
+
+
+            <Modal.Header style={{ backgroundColor: 'gray' }} closeButton>
+                <Modal.Title style={{ color: 'yellow' }}>{props.MovieData.title}</Modal.Title>
+            </Modal.Header>
+
+
+            <Modal.Body style={{ backgroundColor: 'gray' }}>
+
+                <div style={{ ...style1, ...style3 }}>
+                    <Image height={'560px'} src={`https://image.tmdb.org/t/p/w500${props.MovieData.poster_path}`} width='50%'></Image>
+
+                    <Modal.Title style={{ fontSize: '15px' }}>
+                        {props.MovieData.overview}
+                    </Modal.Title>
+                </div>
+
+                <div>
+                    <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
+
+                        <Form.Label style={{ fontSize: '30px' }}>Update Your Feedback Here !</Form.Label>
+
+                        <Form.Control defaultValue={props.MovieData.comment} as="textarea" onChange={handleFeedback} rows={3} />
+
+                    </Form.Group>
+                </div>
+
+            </Modal.Body>
+
+
+            <Modal.Footer>
+
+                <Button variant="secondary" onClick={props.handleclose}>
+                    Close
+                </Button>
+
+                <Button variant="primary" onClick={() => {
+                    alert('Updated, Thank You For The Feedback')
+                    handleSave();
+                    props.handleclose();
+                }}>
+                    Update Changes
+                </Button>
+
+            </Modal.Footer>
+
+
+        </Modal>
+    )
+}
+
+export default ModalFav;
+
+// Done
