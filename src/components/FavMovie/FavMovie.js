@@ -4,6 +4,7 @@ import Col from 'react-bootstrap/Col';
 import { useState } from 'react';
 import React from 'react'
 import ModalFav from '../ModalFav/ModalFav';
+import '../FavMovie/FavMovie.css'
 
 
 function FavMovie(props) {
@@ -31,37 +32,35 @@ function FavMovie(props) {
 
         };
 
-        const response = await fetch(`${process.env.ServerURL}getmovie/${props.movie.id}`, requestOptions);
+        const response = await fetch(`https://movies-library-8ft41utn9-esmail-jawabreh.vercel.app/deleteMovie/${props.movie.id}`, requestOptions);
         const data = await response.json();
         props.setDeletedArr(data)
     }
-
-    const style1 = { backgroundColor: 'black' };
-    const style2 = { width: '18rem' };
 
 
     return (
         <div>
 
             <Col >
-                <Card border="danger" style={{ ...style1, ...style2 }} >
+                <Card id='card'>
 
                     <Card.Body>
 
-                        <Card.Img height={'250px'} variant="top" src={`https://image.tmdb.org/t/p/w500${props.movie.poster_path}`} />
+                        <Card.Img height={'280px'} variant="top" src={`https://image.tmdb.org/t/p/w500${props.movie.poster_path}`} />
 
-                        <Card.Header style={{ color: 'yellow' }} >{props.movie.title}</Card.Header>
+                        <Card.Header id='header' >{props.movie.title}</Card.Header>
 
-                        <Card.Text style={{ color: 'red' }} >
+                        <Card.Text id='text' >
                             {`${props.movie.overview.substring(0, 100)}...`}
                         </Card.Text>
 
-                        <Card.Text style={{ color: 'red' }} >
+                        <Card.Text id='text' >
                             {`${props.movie.comment}`}
                         </Card.Text>
 
-                        <Button variant="danger" style={{ width: '50%' }} onClick={() => { handleDelete(props.movie) }}>Delete</Button>
-                        <Button variant="success" style={{ width: '50%' }} onClick={() => { handleShow(props.movie) }}>Update</Button>
+                        <Button variant="danger"  onClick={() => { handleDelete(props.movie) }}>Delete</Button>
+                        
+                        <Button variant="success"  onClick={() => { handleShow(props.movie) }}>Update</Button>
 
                     </Card.Body>
                 </Card>

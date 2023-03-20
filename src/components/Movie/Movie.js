@@ -6,6 +6,7 @@ import Card from 'react-bootstrap/Card';
 import Col from 'react-bootstrap/Col';
 import './Movie.css'
 
+
 function Movie(props) {
 
     const [showFlag, setShowFlag] = useState(false);

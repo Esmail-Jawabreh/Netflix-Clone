@@ -13,13 +13,12 @@ function FavMovieList(props) {
     }
 
     return (
-        <div style={{ backgroundColor: 'gray' }}>
-            <Row xs={1} md={3} className="g-4">
+        <div>
+            <Row xs={1} md={5} className="g-3">
                 {props.fetch.map((element) => {
                     return (element,
 
                         <FavMovie setNewArr={setNewArr} setDeletedArr={setDeletedArr} key={element.id} movie={element} />
-
                     )
                 })}
             </Row>

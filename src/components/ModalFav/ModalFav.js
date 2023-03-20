@@ -3,6 +3,7 @@ import Modal from 'react-bootstrap/Modal';
 import Image from 'react-bootstrap/Image';
 import Form from 'react-bootstrap/Form';
 import { useState } from 'react';
+import '../ModalFav/ModalFav.css'
 
 
 function ModalFav(props) {
@@ -29,33 +30,32 @@ function ModalFav(props) {
             body: JSON.stringify(dataToSend)
         };
 
-        const response = await fetch(`${process.env.REACT_APP_serverURL}getMovie/${props.MovieData.id}`, requestOptions);
+        const response = await fetch(`https://movies-library-8ft41utn9-esmail-jawabreh.vercel.app/updateMovie/${props.MovieData.id}`, requestOptions);
         const data = await response.json();
         props.setNewArr(data)
     }
 
 
-    const style2 = { backgroundColor: 'black' }
-    const style3 = { display: 'flex' }
-    const style1 = { gap: '10px' }
-
 
     return (
 
-        <Modal style={{ ...style2 }} show={props.showFlag} onHide={props.handleclose}>
+        <Modal id='modal' show={props.showFlag} onHide={props.handleclose}>
 
 
-            <Modal.Header style={{ backgroundColor: 'gray' }} closeButton>
-                <Modal.Title style={{ color: 'yellow' }}>{props.MovieData.title}</Modal.Title>
+            <Modal.Header id='header' closeButton>
+
+                <Modal.Title id='title'>{props.MovieData.title}</Modal.Title>
+
             </Modal.Header>
 
 
-            <Modal.Body style={{ backgroundColor: 'gray' }}>
+            <Modal.Body id='body'>
 
-                <div style={{ ...style1, ...style3 }}>
-                    <Image height={'560px'} src={`https://image.tmdb.org/t/p/w500${props.MovieData.poster_path}`} width='50%'></Image>
+                <div id='bodyDiv'>
 
-                    <Modal.Title style={{ fontSize: '15px' }}>
+                    <Image id='img' src={`https://image.tmdb.org/t/p/w500${props.MovieData.poster_path}`}></Image>
+
+                    <Modal.Title id='titleOV'>
                         {props.MovieData.overview}
                     </Modal.Title>
                 </div>
@@ -63,7 +63,7 @@ function ModalFav(props) {
                 <div>
                     <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">
 
-                        <Form.Label style={{ fontSize: '30px' }}>Update Your Feedback Here !</Form.Label>
+                        <Form.Label id='label'>Update Your Feedback Here !</Form.Label>
 
                         <Form.Control defaultValue={props.MovieData.comment} as="textarea" onChange={handleFeedback} rows={3} />
 
@@ -73,7 +73,7 @@ function ModalFav(props) {
             </Modal.Body>
 
 
-            <Modal.Footer>
+            <Modal.Footer id="footer">
 
                 <Button variant="secondary" onClick={props.handleclose}>
                     Close
