@@ -1,0 +1,14 @@
+#card{
+    background-color: black;
+    width: 18.5rem;
+    border-radius: 1%;
+    border-color: black;
+}
+
+#header{
+    color: #fff;
+}
+
+#text{
+    color: #fff;
+}

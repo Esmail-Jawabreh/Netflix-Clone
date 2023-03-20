@@ -22,8 +22,8 @@ function ModalMovie(props) {
         comment: addFeedback
     }
 
-    const fetch = async () => {
-        await fetch(`${process.env.ServerURL}getMovie`, {
+    const fetchh = async () => {
+        await fetch(`https://movies-library-8ft41utn9-esmail-jawabreh.vercel.app/addMovie`, {
             method: 'POST',
             body: JSON.stringify(
 
@@ -35,8 +35,7 @@ function ModalMovie(props) {
         })
     }
 
-
-
+    
 
     return (
 
@@ -54,7 +53,7 @@ function ModalMovie(props) {
 
                 <div id='bodyDiv'>
 
-                    <Image id = 'img'src={`https://image.tmdb.org/t/p/w500${props.MovieData.poster_path}`} ></Image>
+                    <Image id = 'img' src={`https://image.tmdb.org/t/p/w500${props.MovieData.poster_path}`} ></Image>
 
                     <Modal.Title id='titleOV'>
                         {props.MovieData.overview}
@@ -85,7 +84,7 @@ function ModalMovie(props) {
 
                 <Button variant="primary" onClick={() => {
                     alert('Thanks For the Feedback')
-                    fetch();
+                    fetchh();
                     props.handleclose();
 
                 }}>
