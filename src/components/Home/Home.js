@@ -9,7 +9,7 @@ function Home() {
     const [moviesArr, setMoviesArr] = useState([])
 
     const sendReq = async () => {
-        const url = `https://movies-library-8ft41utn9-esmail-jawabreh.vercel.app/trending`;
+        const url = `${process.env.REACT_APP_URL}trending`;
         const req = await axios.get(url);
         setMoviesArr(req.data);
     }

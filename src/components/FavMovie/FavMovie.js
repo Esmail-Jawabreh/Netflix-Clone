@@ -32,7 +32,7 @@ function FavMovie(props) {
 
         };
 
-        const response = await fetch(`https://movies-library-8ft41utn9-esmail-jawabreh.vercel.app/deleteMovie/${props.movie.id}`, requestOptions);
+        const response = await fetch(`${process.env.REACT_APP_URL}deleteMovie/${props.movie.id}`, requestOptions);
         const data = await response.json();
         props.setDeletedArr(data)
     }

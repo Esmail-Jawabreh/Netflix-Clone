@@ -23,7 +23,7 @@ function ModalMovie(props) {
     }
 
     const fetchh = async () => {
-        await fetch(`https://movies-library-8ft41utn9-esmail-jawabreh.vercel.app/addMovie`, {
+        await fetch(`${process.env.REACT_APP_URL}addMovie`, {
             method: 'POST',
             body: JSON.stringify(
 
