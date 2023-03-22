@@ -9,7 +9,7 @@ function FavList() {
     const [favMovieArr, setFavMoviesArr] = useState([])
 
     const sendReq = async () => {
-        const serverURL = `https://movies-library-8ft41utn9-esmail-jawabreh.vercel.app/getMovies`;
+        const serverURL = `${process.env.REACT_APP_URL}getMovies`;
         const req = await axios.get(serverURL);
         setFavMoviesArr(req.data)
     }

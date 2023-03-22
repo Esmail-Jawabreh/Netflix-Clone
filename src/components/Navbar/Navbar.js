@@ -6,7 +6,7 @@ import './Navbar.css'
 
 function NavBar() {
     return (
-        <Navbar bg="dark" variant="dark">
+        <Navbar className='nav'>
             <Container>
                 <Navbar.Brand href="/">Netflix</Navbar.Brand>
                 <Nav className="me-auto">
